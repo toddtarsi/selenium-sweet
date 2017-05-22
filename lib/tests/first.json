@@ -16,12 +16,11 @@
       "text": "this is a testerooney"
     },
     {
-      "type": "sendKeysToElement",
+      "type": "clickElement",
       "locator": {
-        "type": "id",
-        "value": "lst-ib"
-      },
-      "text": "\n"
+        "type": "xpath",
+        "value": "//div[@class='jsb']/center/input[1]"
+      }
     },
     {
       "type": "clickElement",
