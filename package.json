@@ -8,12 +8,12 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node scripts/transpile.js",
     "clean": "rm ./build/tests/*"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/toddtarsi/selenium-example-tests.git"
+    "url": "git+https://github.com/toddtarsi/selenium-suite.git"
   },
   "keywords": [
     "selenium-builder",
@@ -25,7 +25,7 @@
   "author": "Todd Tarsi",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/toddtarsi/selenium-example-tests/issues"
+    "url": "https://github.com/toddtarsi/selenium-suite/issues"
   },
-  "homepage": "https://github.com/toddtarsi/selenium-example-tests#readme"
+  "homepage": "https://github.com/toddtarsi/selenium-suite#readme"
 }
