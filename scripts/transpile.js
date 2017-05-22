@@ -17,11 +17,14 @@ program
   .option(
     '-f --format <format>',
     `Output format - options: ${formatOptions}`,
-    new RegExp(`^(${formatOptions})$`, 'i'),
-    availableFormats[0].slice(0, -3)
+    new RegExp(`^(${formatOptions})$`, 'i')
   )
   .parse(process.argv);
-
+if(!program.format) {
+  console.info("No output format selected, please select an output format");
+  console.info("Available formats:", formatOptions.replace(/\|/g, ', '));
+  return process.exit(1);
+}
 const formatter = require(path.join('..', formatsRoot, program.format + '.js'));
 
 availableTests.forEach(testName => {
