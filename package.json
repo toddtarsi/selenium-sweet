@@ -1,0 +1,30 @@
+{
+  "name": "selenium-suite",
+  "version": "0.0.1",
+  "description": "A small collection of utilities to assist in persisting and transpiling webdriver test scripts",
+  "main": "index.js",
+  "dependencies": {
+    "commander": "^2.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toddtarsi/selenium-example-tests.git"
+  },
+  "keywords": [
+    "selenium-builder",
+    "selenium-UI",
+    "selenium-interpreter",
+    "selenium2",
+    "selenium-build-time-transpiler"
+  ],
+  "author": "Todd Tarsi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/toddtarsi/selenium-example-tests/issues"
+  },
+  "homepage": "https://github.com/toddtarsi/selenium-example-tests#readme"
+}

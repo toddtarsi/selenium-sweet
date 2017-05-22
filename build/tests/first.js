@@ -16,9 +16,8 @@ b.init({
 .then(function (el) { return b.clear(el)
   .then(function () { return b.type(el, "this is a testerooney"); });
 })
-.then(function () { return b.elementById("lst-ib"); })
-.then(function (el) { return b.type(el, "
-"); })
+.then(function () { return b.elementByXPath("//div[@class='jsb']/center/input[1]"); })
+.then(function (el) { return b.clickElement(el); })
 .then(function () { return b.elementByLinkText("A testerooney | First Page | Forum | Gaia Online"); })
 .then(function (el) { return b.clickElement(el); })
 .fin(function () {
