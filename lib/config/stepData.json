@@ -1,4 +1,4 @@
-const stepData = {
+{
   "get":                             ["url"], 
   "goBack":                          [], 
   "goForward":                       [], 
@@ -97,6 +97,4 @@ const stepData = {
   "waitForEval":                     ["script", "value"],
   "storeEval":                       ["script", "variable"],
   "setWindowSize":                   ["width", "height"]
-};
-
-module.exports = stepData;
+}

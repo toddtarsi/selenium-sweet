@@ -1,0 +1,133 @@
+[
+  {
+    "name": "Navigation",
+    "steps": [
+      "get",
+      "refresh",
+      "goBack",
+      "goForward",
+      "close"
+    ]
+  },
+  {
+    "name": "Input",
+    "steps": [
+      "clickElement",
+      "doubleClickElement",
+      "mouseOverElement",
+      "setElementText",
+      "sendKeysToElement",
+      "setElementSelected",
+      "setElementNotSelected",
+      "clearSelections",
+      "submitElement",
+      "dragToAndDropElement",
+      "clickAndHoldElement",
+      "releaseElement"
+    ]
+  },
+  {
+    "name": "Misc",
+    "steps": [
+      "addCookie",
+      "deleteCookie",
+      "saveScreenshot",
+      "print",
+      "pause",
+      "switchToFrame",
+      "switchToFrameByIndex",
+      "switchToWindow",
+      "switchToWindowByIndex",
+      "switchToWindowByTitle",
+      "switchToDefaultContent",
+      "answerAlert",
+      "acceptAlert",
+      "dismissAlert",
+      "setWindowSize"
+    ]
+  },
+  {
+    "name": "Assertion",
+    "steps": [
+      "assertCurrentUrl",
+      "assertTitle",
+      "assertText",
+      "assertTextPresent",
+      "assertBodyText",
+      "assertPageSource",
+      "assertElementPresent",
+      "assertElementSelected",
+      "assertElementAttribute",
+	  "assertElementStyle",
+      "assertElementValue",
+      "assertCookiePresent",
+      "assertCookieByName",
+      "assertAlertText",
+      "assertAlertPresent",
+      "assertEval"
+    ]
+  },
+  {
+    "name": "Verify",
+    "steps": [
+      "verifyCurrentUrl",
+      "verifyTitle",
+      "verifyText",
+      "verifyTextPresent",
+      "verifyBodyText",
+      "verifyPageSource",
+      "verifyElementPresent",
+      "verifyElementSelected",
+      "verifyElementAttribute",
+	  "verifyElementStyle",
+      "verifyElementValue",
+      "verifyCookiePresent",
+      "verifyCookieByName",
+      "verifyAlertText",
+      "verifyAlertPresent",
+      "verifyEval"
+    ]
+  },
+  {
+    "name": "Wait",
+    "steps": [
+      "waitForCurrentUrl",
+      "waitForTitle",
+      "waitForText",
+      "waitForTextPresent",
+      "waitForBodyText",
+      "waitForPageSource",
+      "waitForElementPresent",
+      "waitForElementSelected",
+      "waitForElementAttribute",
+	  "waitForElementStyle",
+      "waitForElementValue",
+      "waitForCookiePresent",
+      "waitForCookieByName",
+      "waitForAlertText",
+      "waitForAlertPresent",
+      "waitForEval"
+    ]
+  },
+  {
+    "name": "Store",
+    "steps": [
+      "store",
+      "storeCurrentUrl",
+      "storeTitle",
+      "storeText",
+      "storeTextPresent",
+      "storeBodyText",
+      "storePageSource",
+      "storeElementSelected",
+      "storeElementAttribute",
+	  "storeElementStyle",
+      "storeElementValue",
+      "storeCookiePresent",
+      "storeCookieByName",
+      "storeAlertText",
+      "storeAlertPresent",
+      "storeEval"
+    ]
+  }
+]
