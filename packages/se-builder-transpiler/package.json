@@ -1,0 +1,20 @@
+{
+  "name": "se-builder-transpiler",
+  "version": "0.1.1",
+  "description": "The gutted JSON transpiler from se-builder. Let me know if I need to change some license stuff.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/toddtarsi/selenium-suite/packages/se-builder-transpiler"
+  },
+  "keywords": [
+    "se-builder",
+    "transpiler",
+    "server"
+  ],
+  "author": "Todd Tarsi",
+  "license": "ISC"
+}
