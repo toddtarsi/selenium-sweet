@@ -1,14 +1,16 @@
 const java_new = require('./java_new');
-const { createDerivedLangFormatter } = require('./../server/transpiler');
+const { createDerivedLangFormatter } = require('se-builder-transpiler');
 
 module.exports = createDerivedLangFormatter(java_new, {
-  name: "Java/TestNG",
+  name: "Java/JUnit",
   start:
-    "import org.testng.annotations.BeforeMethod;\n" +
-    "import org.testng.annotations.AfterMethod;\n" +
-    "import org.testng.annotations.Test;\n" +
-    "import static org.testng.Assert.*;\n" +
-    "{extraImports}\n" +
+    "import org.junit.After;\n" +
+    "import org.junit.Before;\n" +
+    "import org.junit.AfterClass;\n" +
+    "import org.junit.BeforeClass;\n" +
+    "import org.junit.Test;\n" +
+    "import static org.junit.Assert.*;\n" +
+    "{extraImports}\n{junit_import_extra}" +
     "import java.util.concurrent.TimeUnit;\n" +
     "import java.util.Date;\n" +
     "import java.io.File;\n" +
@@ -18,13 +20,13 @@ module.exports = createDerivedLangFormatter(java_new, {
     "import org.openqa.selenium.*;\n" +
     "import static org.openqa.selenium.OutputType.*;\n" +
     "\n" +
-    "public class {scriptName} {\n" +
+    "public class {scriptName} {junit_class_extra}{\n{junit_fields_extra}" +
     "    {driverVar}\n" +
     "    \n" +
-    "    @BeforeMethod\n" +
+    "    @Before\n" +
     "    public void setUp() throws Exception {\n" +
     "        {initDriver}\n" +
-    "        wd.manage().timeouts().implicitlyWait({timeoutSeconds}, TimeUnit.SECONDS);\n" +
+    "        wd.manage().timeouts().implicitlyWait({timeoutSeconds}, TimeUnit.SECONDS);\n{junit_setup_extra}" +
     "    }\n" +
     "    \n" +
     "    @Test\n" +
@@ -36,7 +38,7 @@ module.exports = createDerivedLangFormatter(java_new, {
   end:
     "    }\n" +
     "    \n" +
-    "    @AfterMethod\n" +
+    "    @After\n" +
     "    public void tearDown() {\n" +
     "        wd.quit();\n" +
     "    }\n" +
@@ -50,11 +52,15 @@ module.exports = createDerivedLangFormatter(java_new, {
     "        }\n" +
     "    }\n" +
     "}\n",
+  junit_import_extra: '',
+  junit_class_extra: '',
+  junit_fields_extra: '',
+  junit_setup_extra: '',
   assert: function(step, escapeValue, doSubs, getter) {
     if (step.negated) {
-      return "        assertNotEquals(" + doSubs(getter.getter) + ", " + doSubs(getter.cmp) + ");\n";
+      return "        assertNotEquals(" + doSubs(getter.cmp) + ", " + doSubs(getter.getter) + ");\n";
     } else {
-      return "        assertEquals(" + doSubs(getter.getter) + ", " + doSubs(getter.cmp) + ");\n";
+      return "        assertEquals(" + doSubs(getter.cmp) + ", " + doSubs(getter.getter) + ");\n";
     }
   },
   boolean_assert: function(step, escapeValue, doSubs, getter) {

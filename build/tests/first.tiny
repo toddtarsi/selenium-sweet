@@ -1,0 +1,6 @@
+[start]
+get! https://www.google.com/
+type! Id - lst-ib - this is a testerooney
+click! XPath - //div[@class='jsb']/center/input[1]
+click! LinkText - A testerooney | First Page | Forum | Gaia Online
+[end]

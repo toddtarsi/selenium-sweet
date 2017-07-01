@@ -6,7 +6,9 @@
   "dependencies": {
     "commander": "^2.9.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "lerna": "^2.0.0-rc.5"
+  },
   "scripts": {
     "build": "node scripts/transpile.js",
     "clean": "rm ./build/tests/*"

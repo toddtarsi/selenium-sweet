@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const transpiler = require('se-builder-transpiler');
 const defaultFormat = require(
   path.join(__dirname, '..', 'lib', 'config')
 ).format;
@@ -33,18 +34,13 @@ if(!program.format) {
   return process.exit(1);
 }
 
-const formatter = require(path.join('..', formatsRoot, program.format + '.js'));
-
-const testRoot = path.join('lib', 'tests');
-const availableTests = fs.readdirSync(testRoot);
-availableTests.forEach(testName => {
-  if (testName.slice(-5) !== '.json') return;
-  const script = parseScript(fs.readFileSync(path.join(testRoot, testName)));
-  fs.writeFile(
-    path.join('build', 'tests', testName.slice(0, -5) + formatter.extension),
-    formatter.format(script, testName, {}),
-    err => {
-      if (err) throw err;
-    }
-  );
-});
+return transpiler.transpileDir(
+  path.join(__dirname, '..', 'formats', program.format + '.js'),
+  path.join(__dirname, '..', 'tests', 'lib'),
+  path.join(__dirname, '..', 'tests', 'build'),
+  (err) => {
+    if (err) throw err;
+    console.log("Transpile completed successfully!");
+    process.exit(0);
+  }
+);

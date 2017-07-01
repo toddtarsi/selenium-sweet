@@ -1,4 +1,4 @@
-const { createLangFormatter } = require('./../server/transpiler');
+const { createLangFormatter } = require('se-builder-transpiler');
 
 module.exports = createLangFormatter({
   name: "PHPUnitWebDriver/Facebook",

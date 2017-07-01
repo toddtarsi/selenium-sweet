@@ -1,0 +1,16 @@
+{
+  "headerVersion": 1,
+  "pluginVersion": "1.0",
+  "builderMinVersion": "2.3",
+  "builderMaxVersion": "3.*",
+  "identifier": "selenium_sweet",
+  "name": "Selenium Sweet",
+  "description": "Confirgure your Se Builder from GitHub.",
+  "description_de": "Konfigure deine Se Builder auf GitHub.",
+  "siteUrl": "https://github.com/toddtarsi/selenium-sweet-plugin",
+  "shutdownFunction": "selenium_sweet.shutdown",
+  "icon": "icon.png",
+  "load": [
+    "plugin.js"
+  ]
+}

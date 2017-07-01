@@ -1,5 +1,5 @@
 const csharp_new = require('./csharp_new');
-const { createDerivedLangFormatter } = require('./../server/transpiler');
+const { createDerivedLangFormatter } = require('se-builder-transpiler');
 
 module.exports = createDerivedLangFormatter(csharp_new, {
   name: "C#/NUnit",

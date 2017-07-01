@@ -50,7 +50,7 @@ const parseScript = function(text) {
       - 
     Features 
     - First we attach a static start block
-      - By letting anything be written here
+      - String composition makes defining an import block here painless
     - For every step in the json process, we 
     - Last we attach an end
 

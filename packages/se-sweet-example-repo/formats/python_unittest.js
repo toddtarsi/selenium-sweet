@@ -1,5 +1,5 @@
 const python = require('./python');
-const { createDerivedLangFormatter } = require('./../server/transpiler');
+const { createDerivedLangFormatter } = require('se-builder-transpiler');
 
 module.exports = createDerivedLangFormatter(python, {
   name: "Python/unittest",

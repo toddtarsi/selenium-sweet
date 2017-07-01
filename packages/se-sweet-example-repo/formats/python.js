@@ -1,5 +1,5 @@
-const stepTypes = require('./../server/transpiler/stepTypes');
-const { createLangFormatter } = require('./../server/transpiler');
+const stepTypes = require('se-builder-transpiler/stepTypes');
+const { createLangFormatter } = require('se-builder-transpiler');
 
 module.exports = createLangFormatter({
   name: "Python",
