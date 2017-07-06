@@ -20,5 +20,8 @@
     "github"
   ],
   "author": "Todd Tarsi",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "se-builder-transpiler": "^0.1.1"
+  }
 }

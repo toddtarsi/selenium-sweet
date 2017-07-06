@@ -1,7 +1,15 @@
-const stepData = require('../../config/stepData');
-
-const StepType = function(name) {
-  this.name = name;
+const StepType = function(parsedJSON) {
+  this.params = [];
+  this.name = parsedJSON.type;
+  for(var name in parsedJSON) {
+    if (
+      name !== 'type' &&
+      name !== 'negated' &&
+      name !== 'type'
+    ) {
+      this.params.push(name);
+    }
+  }
 };
 
 StepType.prototype = {
@@ -9,21 +17,13 @@ StepType.prototype = {
   getName: function() {
     return this.name;
   },
-  /** @return List of parameter names. */
+  /** @return Array of type parameter names. */
   getParamNames: function() {
-    return stepData[this.name];
+    return this.params;
   },
   /** @return Whether the given parameter is a "locator" or "string". */
   getParamType: function(paramName) {
     return paramName.toLowerCase().indexOf("locator") != -1 ? "locator" : "string";
-  },
-  /** @return Whether setting negated to true on a step of this type is valid. */
-  getNegatable: function() {
-    return (
-      this.name.startsWith("waitFor") ||
-      this.name.startsWith("assert") ||
-      this.name.startsWith("verify")
-    );
   },
 };
 

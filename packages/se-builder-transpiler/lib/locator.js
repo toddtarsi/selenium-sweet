@@ -12,11 +12,11 @@ const locator = {};
  * the idea of an xpath locator.
  */
 locator.methods = {
-  id:    { toString: function() { return "id"; }},
-  name:  { toString: function() { return "name"; }},
-  link:  { toString: function() { return "link"; }},
-  css:   { toString: function() { return "css"; }},
-  xpath: { toString: function() { return "xpath"; }},
+  id:    { selenium1: function() { return "id"; }},
+  name:  { selenium1: function() { return "name"; }},
+  link:  { selenium1: function() { return "link"; }},
+  css:   { selenium1: function() { return "css"; }},
+  xpath: { selenium1: function() { return "xpath"; }},
 };
 
 locator.methods.id.selenium2 = "id";
@@ -25,7 +25,7 @@ locator.methods.link.selenium2 = "link text";
 locator.methods.css.selenium2 = "css selector";
 locator.methods.xpath.selenium2 = "xpath";
 
-locator.methodForName = function(seleniumVersion, name) {
+locator.methodForName = function(name, selenium_version) {
   for (var k in locator.methods) {
     if (locator.methods[k][seleniumVersion] === name) {
       return locator.methods[k];
@@ -34,15 +34,8 @@ locator.methodForName = function(seleniumVersion, name) {
   return null;
 };
 
-locator.locToJSON = function(loc) {
-  return {
-    type: loc.getName(builder.selenium2),
-    value: loc.getValue()
-  };
-};
-
-locator.jsonToLoc = function(jsonO) {
-  var method = locator.methodForName('selenium2', jsonO.type);
+locator.jsonToLoc = function(jsonO, selenium_version) {
+  var method = locator.methodForName(jsonO.type, selenium_version);
   var values = {};
   values[method] = ["" + jsonO.value];
   return new locator.Locator(method, 0, values);
@@ -75,49 +68,10 @@ locator.Locator.prototype = {
       return "";
     }
   },
-  /** @return The same locator with the given preferred method. */
-  withPreferredMethod: function(preferredMethod, preferredAlternative) {
-    var l2 = new locator.Locator(preferredMethod, preferredAlternative || 0);
-    for (var t in this.values) {
-      l2.values[t] = this.values[t].slice(0);
-    }
-  },
-  /** @return Whether the locator has a value for the given locator method. */
-  supportsMethod: function(method) {
-    if (this.values[method] && this.values[method].length > 0) {
-      return true;
-    } else {
-      return false;
-    }
-  },
-  /** @return Get the value for the given method. */
-  getValueForMethod: function(method, alternative) {
-    alternative = alternative || 0;
-    if (this.values[method]) {
-      if (alternative >= this.values[method].length) {
-        return "";
-      }
-      return this.values[method][alternative] || "";
-    } else {
-      return "";
-    }
-  },
-  /** @return Whether the given locator has the same preferred method with the same value. */
-  probablyHasSameTarget: function(l2) {
-    if (this.__originalElement && l2.__originalElement) {
-      return this.__originalElement == l2.__originalElement;
-    }
-    return this.preferredMethod === l2.preferredMethod && this.getValue() === l2.getValue();
-  }
 };
 
 locator.empty = function() {
   return new locator.Locator(locator.methods.id);
-};
-
-// From http://stackoverflow.com/questions/2332811/capitalize-words-in-string
-locator.capitalize = function(s) {
-  return s.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
 };
 
 module.exports = locator;
