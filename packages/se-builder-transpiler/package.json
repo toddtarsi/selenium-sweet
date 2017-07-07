@@ -16,5 +16,8 @@
     "server"
   ],
   "author": "Todd Tarsi",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.5.0"
+  }
 }

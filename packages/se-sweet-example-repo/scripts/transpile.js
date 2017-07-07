@@ -1,15 +1,9 @@
 const fs = require('fs');
 const path = require('path');
-const transpiler = require('se-builder-transpiler');
-const defaultFormat = require(
-  path.join(__dirname, '..', 'lib', 'config')
-).format;
-const { createLangFormtter, parseScript } = require(
-  path.join(__dirname, '..', 'lib', 'server', 'transpiler')
-);
-
 const program = require('commander');
-const formatsRoot = path.join('lib', 'formats');
+const { transpileDir } = require('se-builder-transpiler');
+const defaultFormat = require(path.join(__dirname, '..', 'config')).format;
+const formatsRoot = path.join('formats');
 const availableFormats = fs.readdirSync(formatsRoot);
 
 const formatOptions = availableFormats
@@ -34,7 +28,7 @@ if(!program.format) {
   return process.exit(1);
 }
 
-return transpiler.transpileDir(
+return transpileDir(
   path.join(__dirname, '..', 'formats', program.format + '.js'),
   path.join(__dirname, '..', 'tests', 'lib'),
   path.join(__dirname, '..', 'tests', 'build'),
