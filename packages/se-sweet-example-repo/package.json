@@ -1,6 +1,6 @@
 {
   "name": "se-sweet-example-repo",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Basic example of a server using se-sweet to configure their se builder instance from a github repo",
   "main": "scripts/transpile.js",
   "directories": {
@@ -22,6 +22,6 @@
   "author": "Todd Tarsi",
   "license": "ISC",
   "dependencies": {
-    "se-builder-transpiler": "^0.1.1"
+    "se-builder-transpiler": "^0.3.0"
   }
 }
