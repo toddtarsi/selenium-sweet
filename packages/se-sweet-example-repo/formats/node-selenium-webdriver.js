@@ -1,4 +1,3 @@
-const stepTypes = require('se-builder-transpiler/stepTypes');
 const { createLangFormatter } = require('se-builder-transpiler');
 
 module.exports = createLangFormatter({
@@ -365,7 +364,7 @@ module.exports = createLangFormatter({
     var esc = function(v) { return "\"" + v.replace(/\\/g, "\\\\").replace(/"/g, "\\\"") + "\""; };
 
     // Don't escape numerical values.
-    if (stepType == stepTypes.pause) {
+    if (stepType.name === 'pause') {
       esc = function(v) { return v; };
     }
 

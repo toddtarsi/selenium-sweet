@@ -1,4 +1,3 @@
-const stepTypes = require('se-builder-transpiler/stepTypes');
 const { createLangFormatter } = require('se-builder-transpiler');
 
 module.exports = createLangFormatter({

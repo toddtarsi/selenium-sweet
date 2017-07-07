@@ -1,4 +1,3 @@
-const stepTypes = require('se-builder-transpiler/stepTypes');
 const { createLangFormatter } = require('se-builder-transpiler');
 
 module.exports = createLangFormatter({
@@ -292,7 +291,7 @@ module.exports = createLangFormatter({
     }
     
     // Don't escape numerical values.
-    if (stepType == stepTypes.pause || stepType == stepTypes.setWindowSize) {
+    if (stepType.name === 'pause' || stepType.name === 'setWindowSize') {
       esc = function(v) { return v; }
     }
     

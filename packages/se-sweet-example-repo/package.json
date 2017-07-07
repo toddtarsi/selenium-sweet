@@ -22,6 +22,6 @@
   "author": "Todd Tarsi",
   "license": "ISC",
   "dependencies": {
-    "se-builder-transpiler": "^0.3.0"
+    "se-builder-transpiler": "0.3.0"
   }
 }

@@ -1,6 +1,5 @@
 const locator = require('./locator');
 const Script = require('./script');
-const stepTypes = require('./stepTypes');
 const { stepFromJSON } = require('./step');
 
 /**
@@ -11,19 +10,6 @@ const parseScript = function(text, selenium_version) {
   var script = new Script(selenium_version);
   var known_unknowns = [];
   var ko_string = "";
-  for (var i = 0; i < scriptJSON.steps.length; i++) {
-    var typeName = scriptJSON.steps[i].type;
-    if (!stepTypes[typeName] && known_unknowns.indexOf(typeName) == -1) {
-      if (known_unknowns.length > 0) {
-        ko_string += ", ";
-      }
-      ko_string += typeName;
-      known_unknowns.push(typeName);
-    }
-  }
-  if (known_unknowns.length > 0) {
-    throw new Error(_t("sel1_no_command_found") + ": " + ko_string);
-  }
   
   for (var i = 0; i < scriptJSON.steps.length; i++) {
     script.steps.push(stepFromJSON(scriptJSON.steps[i], selenium_version));

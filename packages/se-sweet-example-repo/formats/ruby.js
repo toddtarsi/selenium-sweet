@@ -1,4 +1,3 @@
-const stepTypes = require('se-builder-transpiler/stepTypes');
 const { createLangFormatter } = require('se-builder-transpiler');
 
 module.exports = createLangFormatter({
@@ -205,7 +204,7 @@ module.exports = createLangFormatter({
     // This function takes a string literal and escapes it and wraps it in quotes.
     var esc = function(v) { return "\"" + v.replace(/\\/g, "\\\\").replace(/"/g, "\\\"") + "\""; };
 
-    if (stepType == stepTypes.setWindowSize) {
+    if (stepType.name === 'setWindowSize') {
       esc = function(v) { return v; }
     }
 
