@@ -3,7 +3,7 @@ const path = require('path');
 const program = require('commander');
 const { transpileDir } = require('se-builder-transpiler');
 const defaultFormat = require(path.join(__dirname, '..', 'config')).format;
-const formatsRoot = path.join('formats');
+const formatsRoot = path.join(__dirname, '..', 'formats');
 const availableFormats = fs.readdirSync(formatsRoot);
 
 const formatOptions = availableFormats
