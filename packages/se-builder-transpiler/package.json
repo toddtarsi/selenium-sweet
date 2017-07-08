@@ -1,6 +1,6 @@
 {
   "name": "se-builder-transpiler",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "The gutted JSON transpiler from se-builder. Let me know if I need to change some license stuff.",
   "main": "lib/index.js",
   "scripts": {
