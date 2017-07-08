@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const asnyc = require('async');
+const async = require('async');
 const parser = require('./parser');
 
 const transpileTest = (test, name, formatter, args) => formatter.format(test, name, args || {});
@@ -10,7 +10,7 @@ const curriedFileTranspiler = formatter => (inputPath, outputPath, name) => cb =
     path.join(outputPath, name + formatter.extension),
     transpileTest(
       parser.parseScript(file),
-      testName,
+      name,
       formatter,
       {}
     ),

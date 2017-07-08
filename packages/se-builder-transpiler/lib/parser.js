@@ -5,14 +5,14 @@ const { stepFromJSON } = require('./step');
 /**
  * Code for exporting/importing Selenium 2 scripts in a variety of formats.
 */
-const parseScript = function(text, selenium_version) {
+const parseScript = function(text) {
   var scriptJSON = JSON.parse(text);
-  var script = new Script(selenium_version);
+  var script = new Script('selenium' + scriptJSON.formatVersion);
   var known_unknowns = [];
   var ko_string = "";
   
   for (var i = 0; i < scriptJSON.steps.length; i++) {
-    script.steps.push(stepFromJSON(scriptJSON.steps[i], selenium_version));
+    script.steps.push(stepFromJSON(scriptJSON.steps[i], script.seleniumVersion));
   }
   
   script.timeoutSeconds = scriptJSON.timeoutSeconds || 60;
@@ -41,7 +41,7 @@ const parseScript = function(text, selenium_version) {
     - Last we attach an end
 
 */
-const makeDoSubs = (script, step, name, selenium_version, userParams, used_vars, lang_info) => (line, extras) => {
+const makeDoSubs = (script, step, name, seleniumVersion, userParams, used_vars, lang_info) => (line, extras) => {
   if (extras) {
     for (var k in extras) {
       var v = doSubs(extras[k]);
@@ -57,7 +57,7 @@ const makeDoSubs = (script, step, name, selenium_version, userParams, used_vars,
   for (var j = 0; j < pNames.length; j++) {
     if (step.type.getParamType(pNames[j]) == "locator") {
       line = line.replace(new RegExp("\\{" + pNames[j] + "\\}", "g"), lang_info.escapeValue(step.type, step[pNames[j]].getValue(), pNames[j]));
-      line = line.replace(new RegExp("\\{" + pNames[j] + "By\\}", "g"), lang_info.locatorByForType(step.type, step[pNames[j]].getName(selenium_version), j + 1));
+      line = line.replace(new RegExp("\\{" + pNames[j] + "By\\}", "g"), lang_info.locatorByForType(step.type, step[pNames[j]].getName(seleniumVersion), j + 1));
     } else {
       line = line.replace(new RegExp("\\{" + pNames[j] + "\\}", "g"), lang_info.escapeValue(step.type, step[pNames[j]], pNames[j]));
     }
@@ -134,11 +134,12 @@ const canExport = (lang_info, stepType) => {
 const createLangFormatter = lang_info => ({
   name: lang_info.name,
   extension: lang_info.extension,
-  seleniumVersion: lang_info.selenium_version || 'selenium2',
   get_params: lang_info.get_params || null,
   format: (script, name, userParams) => {
     var t = "";
     var start = lang_info.start;
+    var seleniumVersion = lang_info.seleniumVersion || 'selenium2';
+
     for (var k in lang_info) {
       start = start.replace(new RegExp("\\{" + k + "\\}", "g"), lang_info[k]);
     }
@@ -151,7 +152,7 @@ const createLangFormatter = lang_info => ({
     var used_vars = {};
     stepsLoop: for (var i = 0; i < script.steps.length; i++) {
       var step = script.steps[i];
-      var doSubs = makeDoSubs(script, step, name, lang_info.selenium_version, userParams, used_vars, lang_info);
+      var doSubs = makeDoSubs(script, step, name, seleniumVersion, userParams, used_vars, lang_info);
       var line = lang_info.lineForType[step.type.name];
       if (typeof line != 'undefined') {
         if (line instanceof Function) {

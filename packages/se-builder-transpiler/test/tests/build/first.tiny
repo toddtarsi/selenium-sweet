@@ -1,0 +1,6 @@
+[start]
+get! https://www.google.com/
+type! Id -  - this is a testerooney
+click! XPath - 
+click! LinkText - 
+[end]
