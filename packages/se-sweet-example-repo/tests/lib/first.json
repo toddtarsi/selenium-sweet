@@ -23,6 +23,13 @@
       }
     },
     {
+      "type": "waitForElementPresent",
+      "locator": {
+        "type": "xpath",
+        "value": "//div[@class='jsb']/center/input[1]"
+      }
+    },
+    {
       "type": "clickElement",
       "locator": {
         "type": "link text",
