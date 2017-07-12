@@ -1,5 +1,5 @@
 module.exports = {
   format: 'node-wd',
-  stepData: require('./stepData.json'),
-  stepCategories: require('./stepCategories.json')
+  steps: require('./steps.json'),
+  categories: require('./categories.json')
 };
